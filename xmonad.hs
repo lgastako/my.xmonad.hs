@@ -20,8 +20,9 @@ main = do
     conf <- dzen defaultConfig
     xmonad $ conf
         { workspaces = myWorkspaces,
-          manageHook = myManageHook <+> manageDocks <+> manageHook defaultConfig,
-          layoutHook = avoidStruts $ smartBorders  $  layoutHook defaultConfig,
+          manageHook = myManageHook <+> manageDocks <+>
+                       manageHook defaultConfig,
+          layoutHook = avoidStruts $ smartBorders $ layoutHook defaultConfig,
           borderWidth = 1,
           startupHook = setWMName "LG3D",
           terminal = "urxvt -rv -tr -sh 35 -sl 9999",
