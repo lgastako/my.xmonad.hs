@@ -15,7 +15,7 @@ myManageHook = composeAll . concat $
     ]
 
 
-myWorkspaces = [ "codeterms", "emacs", "firefox", "chrome", "xterms" ] ++ map show [6..7] ++ [ "notes", "chat" ]
+myWorkspaces = [ "chrome", "emacs", "codeterms" ] ++ map show [4..7] ++ [ "music", "chat" ]
 
 main = do
     conf <- dzen defaultConfig
