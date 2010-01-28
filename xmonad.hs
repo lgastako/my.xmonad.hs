@@ -30,11 +30,11 @@ main = do
         } `additionalKeys` myKeys
 
 myKeys =
-    [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock"),
+    [ ((mod1Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock"),
       ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s"),
       ((0, xK_Print), spawn "scrot")
     ]
     ++
-    [((m .|. mod4Mask, k), windows $ f i)
+    [((m .|. mod1Mask, k), windows $ f i)
          | (i, k) <- zip myWorkspaces [xK_1 .. xK_9]
          , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
