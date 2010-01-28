@@ -14,8 +14,7 @@ myManageHook = composeAll . concat $
     [ [ className =? "Firefox-bin" --> doShift "web"  ]
     ]
 
-
-myWorkspaces = [ "chrome", "emacs", "codeterms" ] ++ map show [4..7] ++ [ "music", "chat" ]
+myWorkspaces = [ "web", "emacs", "codeterms" ] ++ map show [4..7] ++ [ "music", "chat" ]
 
 main = do
     conf <- dzen defaultConfig
