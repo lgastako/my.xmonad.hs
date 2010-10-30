@@ -1,6 +1,7 @@
 import XMonad
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageHelpers
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Hooks.SetWMName
 import XMonad.Layout.NoBorders
@@ -11,7 +12,9 @@ import qualified XMonad.StackSet as W
 import System.IO
 
 myManageHook = composeAll . concat $
-    [ [ className =? "Firefox-bin" --> doShift "web"  ]
+    [ [ className =? "Firefox-bin" --> doShift "web"  ],
+     -- Makes YouTube and other flash videos full-screenable
+      [ isFullscreen --> doFullFloat ]
     ]
 
 myWorkspaces = [ "web", "emacs", "codeterms" ] ++ map show [4..7] ++ [ "music", "chat" ]
@@ -25,7 +28,7 @@ main = do
           layoutHook = avoidStruts $ smartBorders $ layoutHook defaultConfig,
           borderWidth = 1,
           startupHook = setWMName "LG3D",
-          terminal = "urxvt -rv -tr -sh 35 -sl 9999",
+          terminal = "urxvt -cd /home/john -rv -tr -sh 15 -sl 9999 -fn \"xft:Mono:size=13\"",
           logHook = dynamicLogWithPP $ dzenPP
         } `additionalKeys` myKeys
 
